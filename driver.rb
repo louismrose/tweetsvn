@@ -1,7 +1,6 @@
-# require 'tweetsvn'
+require 'tweetsvn'
 
 while true
-  sleep 60
-  puts Time.now
-  # Tweetsvn.new.run
+  sleep 60 * 15
+  Tweetsvn.new.run
 end
