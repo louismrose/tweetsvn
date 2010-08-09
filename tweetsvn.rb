@@ -1,6 +1,9 @@
 $: << File.expand_path(File.dirname(__FILE__) + '/lib')
 
 require 'rubygems'
+require 'bundler'
+Bundler.setup
+
 require 'update_twitter_from_source_transaction'
 require 'xauth_consumer'
 
