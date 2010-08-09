@@ -27,6 +27,3 @@ private
     YAML::load_file('secrets.yml')
   end
 end
-
-
-Tweetsvn.new.run
