@@ -1,6 +1,5 @@
-GIT
-  remote: git://github.com/louismrose/ruby-gmail.git
-  revision: 27f96e8
+PATH
+  remote: vendor/gems/ruby-gmail
   specs:
     ruby-gmail (0.2.0)
       mail (>= 2.2.1)
