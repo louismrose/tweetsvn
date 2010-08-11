@@ -10,8 +10,8 @@ task :env do
   require 'yaml'
   require 'lib/util/hash_util.rb'
   
-  secrets     = YAML::load_file('secrets.yml')
-  env_vars    = HashUtil.squash(secrets).to_a
+  secrets     = YAML::load_file('config/secrets.yml')
+  env_vars    = HashUtil.squash(secrets, '_', 'tweetsvn_').to_a
   environment = env_vars.map {|name,value| name.upcase + "=" + value }.join(' ')
   
   sh "heroku config:add #{environment}"
