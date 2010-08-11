@@ -30,13 +30,22 @@ private
     if File.exists?('config/secrets.yml')
       @secrets = YAML::load_file('config/secrets.yml')
     else
-      @secrets['source']['username'] = ENV['TWEETSVN_SOURCE_USERNAME']
-      @secrets['source']['password'] = ENV['TWEETSVN_SOURCE_PASSWORD']
-      
-      @secrets['twitter']['consumer']['key']    = ENV['TWEETSVN_TWITTER_CONSUMER_KEY']
-      @secrets['twitter']['consumer']['secret'] = ENV['TWEETSVN_TWITTER_CONSUMER_SECRET']
-      @secrets['twitter']['account']['username'] = ENV['TWEETSVN_TWITTER_CONSUMER_KEY']
-      @secrets['twitter']['account']['password'] = ENV['TWEETSVN_TWITTER_CONSUMER_KEY']
+      @secrets = {
+                   'source' => {
+                     'username' => ENV['TWEETSVN_SOURCE_USERNAME'],
+                     'password' => ENV['TWEETSVN_SOURCE_PASSWORD']
+                   },
+                   'twitter' => {
+                     'consumer' => {
+                       'key'    => ENV['TWEETSVN_TWITTER_CONSUMER_KEY'],
+                       'secret' => ENV['TWEETSVN_TWITTER_CONSUMER_SECRET']
+                     },
+                     'account' => {
+                       'username' => ENV['TWEETSVN_TWITTER_ACCOUNT_USERNAME'],
+                       'password' => ENV['TWEETSVN_TWITTER_ACCOUNT_PASSWORD']
+                     }
+                   }
+                 }
     end
   end
 end
