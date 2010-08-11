@@ -1,2 +1,2 @@
-secrets.yml
+config/secrets.yml
 .bundle

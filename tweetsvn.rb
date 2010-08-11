@@ -27,8 +27,8 @@ class Tweetsvn
 
 private
   def load_secrets
-    if File.exists?('secrets.yml')
-      @secrets = YAML::load_file('secrets.yml')
+    if File.exists?('config/secrets.yml')
+      @secrets = YAML::load_file('config/secrets.yml')
     else
       @secrets['source']['username'] = ENV['TWEETSVN_SOURCE_USERNAME']
       @secrets['source']['password'] = ENV['TWEETSVN_SOURCE_PASSWORD']
