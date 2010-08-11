@@ -12,7 +12,7 @@ task :env do
   
   secrets     = YAML::load_file('config/secrets.yml')
   env_vars    = HashUtil.squash(secrets, '_', 'tweetsvn_').to_a
-  environment = env_vars.map {|name,value| name.upcase + "=" + value }.join(' ')
+  environment = env_vars.map {|name,value| "#{name.upcase}='#{value}'" }.join(' ')
   
   sh "heroku config:add #{environment}"
 end
