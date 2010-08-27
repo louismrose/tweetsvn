@@ -15,26 +15,33 @@ class SingleCommitProcessor
   end
 
   def publish
-    publish_commit_message
-    publish_bugzilla_link
+    if commit_contains_log_message?
+      publish_commit_message
+      publish_bugzilla_link
+    end
   end
   
   def publish_commit_message 
-    log_length = 120 - author.length - 3
+    suffix = " (#{author})"
+    shortened_log = log[0..(120 - suffix.length - 1)]
     
-    @tweeter.tweet "#{log log_length} (#{author})"
+    @tweeter.tweet shortened_log + suffix
   end
   
   def publish_bugzilla_link
-    identifiers = (/#(\d+)/).match(@commit)
+    identifiers = (/(\d+)/).match(log)
     if identifiers
       @tweeter.tweet "https://bugs.eclipse.org/bugs/show_bug.cgi?id=#{identifiers[1]}"
     end
   end
   
 private
-  def log maximum_length
-    first_match(/Log:\s*(.*)\s*/)[0..maximum_length-1]
+  def commit_contains_log_message?
+    not log.empty?
+  end
+  
+  def log
+    first_match(/Log:\s*(.*)\s*/)
   end
 
   def author

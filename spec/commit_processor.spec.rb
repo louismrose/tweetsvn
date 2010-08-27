@@ -15,11 +15,9 @@ class TweeterSpy
 end
 
 describe "commit processor" do
-  before(:all) do
-    @tweeter_spy = TweeterSpy.new
-  end
-  
+
   def publish commit
+    @tweeter_spy = TweeterSpy.new
     CommitProcessor.new(@tweeter_spy).publish commit
   end
   
@@ -36,6 +34,20 @@ Added copyright notice to Flock's Emfatic file.
     
     @tweeter_spy.tweeted.should == ["Added copyright notice to Flock's Emfatic file. (lrose)"]
   end
+  
+    it "should not tweet commits with no log message" do
+      publish %<Author: lrose
+  Date: 2010-03-25 11:04:14 -0400 (Thu, 25 Mar 2010)
+  New Revision: 977
+
+  Modified:
+    trunk/plugins/org.eclipse.epsilon.flock.engine/src/org/eclipse/epsilon/flock/model/AbstractSyntax.emf
+  Log:
+
+  >
+
+      @tweeter_spy.tweeted.should == []
+    end
   
   context "long message" do
     before(:all) do
@@ -77,7 +89,7 @@ New Revision: 977
 Modified:
   trunk/plugins/org.eclipse.epsilon.flock.engine/src/org/eclipse/epsilon/flock/model/AbstractSyntax.emf
 Log:
-Fixed issue #123456
+Fixed issue 123456
 >
     end
 
@@ -86,7 +98,7 @@ Fixed issue #123456
     end
     
     it "should tweet commit message first" do
-      @tweeter_spy.tweeted[0].should == "Fixed issue #123456 (lrose)"
+      @tweeter_spy.tweeted[0].should == "Fixed issue 123456 (lrose)"
     end
     
     it "should tweet bugzilla link second" do
