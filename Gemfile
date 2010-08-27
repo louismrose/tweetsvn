@@ -11,3 +11,9 @@ gem "twitter", "0.9.7"
 # Heroku will only deploy rack applications
 # so including a dummy Sinatra app
 gem "sinatra", "1.0" 
+
+
+group :test do
+  gem 'rspec', '2.0.0.beta.19'
+end
+

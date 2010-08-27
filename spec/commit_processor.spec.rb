@@ -1,3 +1,4 @@
+require 'rspec'
 require 'lib/commit_processor.rb'
 
 class TweeterSpy

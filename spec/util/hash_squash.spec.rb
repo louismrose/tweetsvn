@@ -1,3 +1,4 @@
+require 'rspec'
 require 'lib/util/hash_util.rb'
 
 describe "squash hash" do
