@@ -11,8 +11,7 @@ class GmailCommitSource
   end
   
   def mark_as_published commit
-    commit.email.label "Tweeted"
-    commit.email.archive!
+    commit.email.move_to "Tweeted"
   end
 
 private
