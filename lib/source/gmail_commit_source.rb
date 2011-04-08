@@ -7,21 +7,20 @@ class GmailCommitSource
   end
   
   def commits
-    unread_mail.map { |email| create_commit_and_keep_unread email }
+    unpublished_mail.map { |email| create_commit email }
   end
   
   def mark_as_published commit
-    commit.email.mark :read
+    commit.email.label "Tweeted"
+    commit.email.archive!
   end
 
 private
-  def unread_mail
-    @gmail.inbox.emails :unread
+  def unpublished_mail
+    @gmail.inbox.emails
   end
   
-  def create_commit_and_keep_unread email
-    commit = Commit.new email # causes email to be marked as read
-    email.mark :unread
-    commit
+  def create_commit email
+    Commit.new email
   end
 end
