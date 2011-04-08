@@ -13,6 +13,7 @@ class GmailCommitSource
   def mark_as_published commit
     # creates a copy of the email in the Tweeted mailbox
     commit.email.label "Tweeted" 
+    
     # delete the original email from the Queued mailbox
     commit.email.delete!
   end
