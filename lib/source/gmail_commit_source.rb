@@ -7,17 +7,20 @@ class GmailCommitSource
   end
   
   def commits
-    unpublished_mail.map { |email| create_commit email }
+    queued_mail.map { |email| create_commit email }
   end
   
   def mark_as_published commit
-    commit.email.label "Tweeted"
-    commit.email.archive!
+    # creates a copy of the email in the Tweeted mailbox
+    commit.email.label "Tweeted" 
+    
+    # delete the original email from the Queued mailbox
+    commit.email.delete!
   end
 
 private
-  def unpublished_mail
-    @gmail.inbox.emails
+  def queued_mail
+    @gmail.mailbox("Queued").emails
   end
   
   def create_commit email
