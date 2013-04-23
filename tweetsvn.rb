@@ -5,8 +5,6 @@ require 'bundler'
 Bundler.setup
 
 require 'update_twitter_from_source_transaction'
-require 'xauth_consumer'
-
 
 class Tweetsvn
   def run
