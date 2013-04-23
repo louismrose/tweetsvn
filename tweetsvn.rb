@@ -14,13 +14,11 @@ class Tweetsvn
     
     source  = GmailCommitSource.new @secrets['source']['username'],
                                     @secrets['source']['password']
-    
-    consumer = XauthConsumer.new @secrets['twitter']['consumer']['key'],
-                                 @secrets['twitter']['consumer']['secret']
 
-    tweeter = Tweeter.new consumer,
-                          @secrets['twitter']['account']['username'],
-                          @secrets['twitter']['account']['password']
+    tweeter = Tweeter.new @secrets['twitter']['consumer']['key'],
+                          @secrets['twitter']['consumer']['secret'],
+                          @secrets['twitter']['access']['token'],
+                          @secrets['twitter']['access']['secret']
     
     UpdateTwitterFromSourceTransaction.new(source,tweeter).run
   end
@@ -40,9 +38,9 @@ private
                        'key'    => ENV['TWEETSVN_TWITTER_CONSUMER_KEY'],
                        'secret' => ENV['TWEETSVN_TWITTER_CONSUMER_SECRET']
                      },
-                     'account' => {
-                       'username' => ENV['TWEETSVN_TWITTER_ACCOUNT_USERNAME'],
-                       'password' => ENV['TWEETSVN_TWITTER_ACCOUNT_PASSWORD']
+                     'access' => {
+                       'token' => ENV['TWEETSVN_TWITTER_ACCESS_TOKEN'],
+                       'secret' => ENV['TWEETSVN_TWITTER_ACCESS_SECRET']
                      }
                    }
                  }
