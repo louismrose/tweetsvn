@@ -1,6 +1,6 @@
 desc "Executed by Heroku's cron job"
 task :cron do
-  require 'tweetsvn.rb'
+  require_relative 'tweetsvn.rb'
 
   Tweetsvn.new.run
 end

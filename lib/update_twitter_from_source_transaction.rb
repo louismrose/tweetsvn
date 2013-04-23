@@ -1,6 +1,6 @@
 require 'source/gmail_commit_source'
-require 'tweeter'
-require 'commit_processor'
+require_relative 'tweeter'
+require_relative 'commit_processor'
 
 class UpdateTwitterFromSourceTransaction
   def initialize commit_source, tweeter

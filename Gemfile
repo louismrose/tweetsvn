@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gem "ruby-gmail", :git => "git://github.com/louismrose/ruby-gmail.git" 
 
 gem "twitter", "4.6.2"
-
+gem "rake", "10.0.4"
 
 # Heroku will only deploy rack applications
 # so including a dummy Sinatra app
