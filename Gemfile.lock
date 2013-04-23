@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/louismrose/ruby-gmail.git
+  revision: aa923c622db7f161a36149d5485585b0c63caf92
+  specs:
+    ruby-gmail (0.2.0)
+      mail (>= 2.2.1)
+      shared-mime-info
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -24,9 +32,6 @@ GEM
     rspec-expectations (2.11.3)
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.11.3)
-    ruby-gmail (0.2.1)
-      mail (>= 2.2.1)
-      shared-mime-info
     shared-mime-info (0.1)
     simple_oauth (0.2.0)
     sinatra (1.4.2)
@@ -47,6 +52,6 @@ PLATFORMS
 
 DEPENDENCIES
   rspec (= 2.11.0)
-  ruby-gmail (= 0.2.1)
+  ruby-gmail!
   sinatra (= 1.4.2)
   twitter (= 4.6.2)

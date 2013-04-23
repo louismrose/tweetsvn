@@ -8,7 +8,7 @@ end
 desc "Set Heroku environment variables from secrets.yml"
 task :env do
   require 'yaml'
-  require 'lib/util/hash_util.rb'
+  require_relative 'lib/util/hash_util.rb'
   
   secrets     = YAML::load_file('config/secrets.yml')
   env_vars    = HashUtil.squash(secrets, '_', 'tweetsvn_').to_a
