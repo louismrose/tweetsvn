@@ -17,6 +17,7 @@ task :env do
   sh "heroku config:add #{environment}"
 end
 
-
-require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec)
+unless ENV['RACK_ENV'] == "production"
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+end
