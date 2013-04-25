@@ -1,4 +1,4 @@
-require 'source/gmail_commit_source'
+require_relative 'source/gmail_commit_source'
 require_relative 'tweeter'
 require_relative 'commit_processor'
 
