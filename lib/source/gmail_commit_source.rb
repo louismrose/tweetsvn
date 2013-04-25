@@ -1,5 +1,5 @@
 require 'gmail'
-require 'source/commit'
+require_relative 'commit'
 
 class GmailCommitSource
   def initialize username, password
