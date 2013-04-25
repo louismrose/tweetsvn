@@ -1,2 +1,2 @@
-require_relative 'sinatra_app'
+require './sinatra_app'
 run Sinatra::Application
